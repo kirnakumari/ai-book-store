@@ -1,17 +1,9 @@
 import streamlit as st
-import os
-from dotenv import load_dotenv
 from google import genai
 
-load_dotenv()
-
 # Gemini AI
-api_key = os.getenv("GEMINI_API_KEY")
-
-if api_key:
-    client = genai.Client(api_key=api_key)
-else:
-    client = None
+api_key = st.secrets["GEMINI_API_KEY"]
+client = genai.Client(api_key=api_key)
 
 
 # ---------------- BOOK DATABASE ----------------
